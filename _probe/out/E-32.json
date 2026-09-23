@@ -1,0 +1,11 @@
+{
+ "tag": "E-32",
+ "desc": "E32 interactions limit=0",
+ "method": "GET",
+ "path": "/api/interactions?limit=0",
+ "body": null,
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.013544082641601562,
+ "response": "{\"detail\":\"query.limit: Input should be greater than or equal to 1\"}"
+}

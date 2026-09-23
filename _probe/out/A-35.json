@@ -1,0 +1,15 @@
+{
+ "tag": "A-35",
+ "desc": "Capture note 30/30 [AD] Reading",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Reading: 'Make It Stick' says retrieval practice beats re-reading. Testing yourself is the learning, not the measurement.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.017534971237182617,
+ "response": "{\"id\":32,\"content\":\"Reading: 'Make It Stick' says retrieval practice beats re-reading. Testing yourself is the learning, not the measurement.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174140.526444,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

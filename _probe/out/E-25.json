@@ -1,0 +1,11 @@
+{
+ "tag": "E-25",
+ "desc": "E25 unknown API path",
+ "method": "GET",
+ "path": "/api/nope",
+ "body": null,
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.01859593391418457,
+ "response": "{\"detail\":\"Not Found\"}"
+}

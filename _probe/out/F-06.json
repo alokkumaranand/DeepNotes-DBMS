@@ -1,0 +1,13 @@
+{
+ "tag": "F-06",
+ "desc": "Rollback to version 1 (historical structure)",
+ "method": "POST",
+ "path": "/api/structure/rollback",
+ "body": {
+  "version_id": 1
+ },
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.032108306884765625,
+ "response": "{\"version\":7}"
+}

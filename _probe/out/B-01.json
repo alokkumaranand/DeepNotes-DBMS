@@ -1,0 +1,11 @@
+{
+ "tag": "B-01",
+ "desc": "List guidance before adding any",
+ "method": "GET",
+ "path": "/api/guidance",
+ "body": null,
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.008287429809570312,
+ "response": "{\"items\":[]}"
+}

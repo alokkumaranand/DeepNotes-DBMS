@@ -1,0 +1,11 @@
+{
+ "tag": "E-35",
+ "desc": "E35 host header not loopback (TrustedHost)",
+ "method": "GET",
+ "path": "/api/status",
+ "body": null,
+ "raw": null,
+ "status": 400,
+ "elapsed": 0.0014467239379882812,
+ "response": "Invalid host header"
+}

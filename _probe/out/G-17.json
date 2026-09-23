@@ -1,0 +1,11 @@
+{
+ "tag": "G-17",
+ "desc": "G14 final status",
+ "method": "GET",
+ "path": "/api/status",
+ "body": null,
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.014611482620239258,
+ "response": "{\"jobs\":{\"pending\":0,\"running\":0,\"completed\":245,\"failed\":4,\"superseded\":73},\"active_version\":9,\"model_configured\":true,\"demo_mode\":false,\"worker_running\":true,\"last_worker_error\":null}"
+}

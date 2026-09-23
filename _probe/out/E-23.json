@@ -1,0 +1,11 @@
+{
+ "tag": "E-23",
+ "desc": "E23 retry a job id that does not exist",
+ "method": "POST",
+ "path": "/api/jobs/999999/retry",
+ "body": null,
+ "raw": null,
+ "status": 415,
+ "elapsed": 0.018410205841064453,
+ "response": "{\"detail\":\"Use application/json\"}"
+}

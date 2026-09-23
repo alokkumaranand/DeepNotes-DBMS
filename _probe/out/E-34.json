@@ -1,0 +1,11 @@
+{
+ "tag": "E-34",
+ "desc": "E34 wrong HTTP verb on queries (GET)",
+ "method": "GET",
+ "path": "/api/queries",
+ "body": null,
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.0033104419708251953,
+ "response": "{\"detail\":\"Not Found\"}"
+}

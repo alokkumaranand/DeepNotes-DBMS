@@ -1,0 +1,15 @@
+{
+ "tag": "A-25",
+ "desc": "Capture note 21/30 [U] Java collections",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Java collections: HashMap allows one null key and multiple null values; Hashtable allows neither. HashMap is not synchronized.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.012498855590820312,
+ "response": "{\"id\":23,\"content\":\"Java collections: HashMap allows one null key and multiple null values; Hashtable allows neither. HashMap is not synchronized.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.8086548,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

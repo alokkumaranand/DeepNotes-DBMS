@@ -1,0 +1,15 @@
+{
+ "tag": "A-08",
+ "desc": "Capture note 6/30 [F] Feedback about DeepNotes",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Feedback on DeepNotes: the answer-first layout is good, but the references section is hard to scan. Also I want to edit a note's title after saving.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.05143427848815918,
+ "response": "{\"id\":8,\"content\":\"Feedback on DeepNotes: the answer-first layout is good, but the references section is hard to scan. Also I want to edit a note's title after saving.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173623.0255222,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

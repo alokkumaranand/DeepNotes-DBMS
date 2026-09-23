@@ -1,0 +1,15 @@
+{
+ "tag": "B-07",
+ "desc": "Add a guidance targeting a section id that does not exist yet (class scope)",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "class",
+  "target_id": "java-study",
+  "content": "Java study material should always name the exact class or method involved."
+ },
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.029816627502441406,
+ "response": "{\"detail\":\"Class not found in active structure\"}"
+}

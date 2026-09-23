@@ -1,0 +1,15 @@
+{
+ "tag": "E-13",
+ "desc": "E13 guidance global scope WITH a target",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "global",
+  "target_id": "5",
+  "content": "global with target"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.015102148056030273,
+ "response": "{\"detail\":\"body: Value error, Global guidance must not have a target\"}"
+}

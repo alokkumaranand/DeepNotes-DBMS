@@ -1,0 +1,15 @@
+{
+ "tag": "E-39",
+ "desc": "E39 guidance for a nonexistent entry id",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "entry",
+  "target_id": "999999",
+  "content": "guidance for missing entry"
+ },
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.026367902755737305,
+ "response": "{\"detail\":\"Entry not found\"}"
+}

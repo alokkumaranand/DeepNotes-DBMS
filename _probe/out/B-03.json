@@ -1,0 +1,15 @@
+{
+ "tag": "B-03",
+ "desc": "Entry-scoped guidance: tag a note as personal health, not work",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "entry",
+  "target_id": "14",
+  "content": "Treat this as personal wellbeing context. Do not surface it when I ask work or study questions."
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.05482029914855957,
+ "response": "{\"id\":2}"
+}

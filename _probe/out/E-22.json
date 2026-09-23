@@ -1,0 +1,13 @@
+{
+ "tag": "E-22",
+ "desc": "E22 rollback nonexistent version 99999",
+ "method": "POST",
+ "path": "/api/structure/rollback",
+ "body": {
+  "version_id": 99999
+ },
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.005284309387207031,
+ "response": "{\"detail\":\"Structure version not found\"}"
+}

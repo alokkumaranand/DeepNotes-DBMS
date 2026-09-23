@@ -1,0 +1,15 @@
+{
+ "tag": "A-27",
+ "desc": "Capture note 23/30 [W] Travel",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Travel: train to Pune on the 5th, departs 6:40am from platform 4. Book a return for the 7th evening.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.038823843002319336,
+ "response": "{\"id\":25,\"content\":\"Travel: train to Pune on the 5th, departs 6:40am from platform 4. Book a return for the 7th evening.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.8716948,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

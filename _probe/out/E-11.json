@@ -1,0 +1,13 @@
+{
+ "tag": "E-11",
+ "desc": "E11 cross-origin POST attempt (CSRF)",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "csrf attempt"
+ },
+ "raw": null,
+ "status": 403,
+ "elapsed": 0.016696691513061523,
+ "response": "{\"detail\":\"Cross-origin requests are not allowed\"}"
+}

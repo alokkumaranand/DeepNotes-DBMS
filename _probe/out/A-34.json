@@ -1,0 +1,15 @@
+{
+ "tag": "A-34",
+ "desc": "Capture note 29/30 [AC] Finance",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Finance: SIP of 5000/month into the index fund on the 3rd. Emergency fund target is 6 months of expenses.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.02702951431274414,
+ "response": "{\"id\":31,\"content\":\"Finance: SIP of 5000/month into the index fund on the 3rd. Emergency fund target is 6 months of expenses.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174140.5062613,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-05",
+ "desc": "Capture note 4/30 [D] Posting draft",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Draft LinkedIn post: 'I built a local-first notes app that organizes itself in the background. Notes stay untouched; an interpretation layer evolves.' Needs a hook in the first line. Maybe mention privacy.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.013889551162719727,
+ "response": "{\"id\":6,\"content\":\"Draft LinkedIn post: 'I built a local-first notes app that organizes itself in the background. Notes stay untouched; an interpretation layer evolves.' Needs a hook in the first line. Maybe mention privacy.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173527.6940339,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

@@ -1,0 +1,13 @@
+{
+ "tag": "E-08",
+ "desc": "E08 wrong type for content (number)",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": 12345
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.004456281661987305,
+ "response": "{\"detail\":\"body.content: Input should be a valid string\"}"
+}

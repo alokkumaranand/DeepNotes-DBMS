@@ -1,0 +1,11 @@
+{
+ "tag": "E-27",
+ "desc": "E27 missing static file",
+ "method": "GET",
+ "path": "/nope.html",
+ "body": null,
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.01539921760559082,
+ "response": "{\"detail\":\"Not Found\"}"
+}

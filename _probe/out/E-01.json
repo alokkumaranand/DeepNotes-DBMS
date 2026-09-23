@@ -1,0 +1,13 @@
+{
+ "tag": "E-01",
+ "desc": "E01 empty note content",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": ""
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.005730867385864258,
+ "response": "{\"detail\":\"body.content: String should have at least 1 character\"}"
+}

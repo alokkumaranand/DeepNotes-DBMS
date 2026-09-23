@@ -1,0 +1,14 @@
+{
+ "tag": "E-38",
+ "desc": "E38 very long source_title (501 chars)",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "note",
+  "source_title": "ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.0024700164794921875,
+ "response": "{\"detail\":\"body.source_title: String should have at most 500 characters\"}"
+}

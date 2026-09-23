@@ -1,0 +1,15 @@
+{
+ "tag": "A-23",
+ "desc": "Capture note 19/30 [S] Assignment reminder",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Reminder: submit the DBMS assignment PDF by Friday 11:59pm on the portal. Include the ER diagram.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.013809442520141602,
+ "response": "{\"id\":21,\"content\":\"Reminder: submit the DBMS assignment PDF by Friday 11:59pm on the portal. Include the ER diagram.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.7641768,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

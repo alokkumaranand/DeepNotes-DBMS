@@ -1,0 +1,15 @@
+{
+ "tag": "A-02",
+ "desc": "Capture note 1/30 [A] Java study note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Java: ArrayList vs LinkedList. ArrayList gives O(1) random access because it is backed by an array; LinkedList is O(n) for get(i) but O(1) insert/remove at the ends. For my DSA exam I keep mixing these two up.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.014953851699829102,
+ "response": "{\"id\":3,\"content\":\"Java: ArrayList vs LinkedList. ArrayList gives O(1) random access because it is backed by an array; LinkedList is O(n) for get(i) but O(1) insert/remove at the ends. For my DSA exam I keep mixing these two up.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173527.547001,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

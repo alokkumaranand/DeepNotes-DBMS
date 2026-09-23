@@ -1,0 +1,11 @@
+{
+ "tag": "E-19",
+ "desc": "E19 entries limit=101 (above max)",
+ "method": "GET",
+ "path": "/api/entries?limit=101",
+ "body": null,
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.01334381103515625,
+ "response": "{\"detail\":\"query.limit: Input should be less than or equal to 100\"}"
+}

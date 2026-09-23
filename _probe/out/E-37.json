@@ -1,0 +1,13 @@
+{
+ "tag": "E-37",
+ "desc": "E37 null bytes and control chars in note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "null\u0000byte and \u0007 bell and   line sep"
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.03333735466003418,
+ "response": "{\"id\":37,\"content\":\"null\\u0000byte and \\u0007 bell and   line sep\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790175671.378784,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

@@ -1,0 +1,13 @@
+{
+ "tag": "E-29",
+ "desc": "E29 store SQL-injection-shaped content",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "'); DROP TABLE entries; -- and ' OR 1=1 --"
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.02891397476196289,
+ "response": "{\"id\":35,\"content\":\"'); DROP TABLE entries; -- and ' OR 1=1 --\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790175671.254115,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

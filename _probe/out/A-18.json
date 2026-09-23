@@ -1,0 +1,15 @@
+{
+ "tag": "A-18",
+ "desc": "Capture note 15/30 [O] Java Spring",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Java Spring: @Transactional only works through the proxy, so self-invocation bypasses it. This is the same trap as @Cacheable.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.021582365036010742,
+ "response": "{\"id\":17,\"content\":\"Java Spring: @Transactional only works through the proxy, so self-invocation bypasses it. This is the same trap as @Cacheable.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.6797109,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

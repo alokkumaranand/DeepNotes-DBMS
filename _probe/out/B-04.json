@@ -1,0 +1,14 @@
+{
+ "tag": "B-04",
+ "desc": "Global guidance: style preference",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "global",
+  "content": "When I ask for study help, prefer short bullet points over long prose. Always tell me if the answer comes from my notes or from general knowledge."
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.011309623718261719,
+ "response": "{\"id\":3}"
+}

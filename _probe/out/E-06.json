@@ -1,0 +1,14 @@
+{
+ "tag": "E-06",
+ "desc": "E06 unknown extra field in body",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "note with extra field",
+  "bogus": 1
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.0026090145111083984,
+ "response": "{\"detail\":\"body.bogus: Extra inputs are not permitted\"}"
+}

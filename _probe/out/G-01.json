@@ -1,0 +1,11 @@
+{
+ "tag": "G-01",
+ "desc": "G01 retry nonexistent job, WITH json header (E23 redone)",
+ "method": "POST",
+ "path": "/api/jobs/999999/retry",
+ "body": null,
+ "raw": "",
+ "status": 404,
+ "elapsed": 0.030864477157592773,
+ "response": "{\"detail\":\"Job not found\"}"
+}

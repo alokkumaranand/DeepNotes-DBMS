@@ -1,0 +1,11 @@
+{
+ "tag": "E-36",
+ "desc": "E36 unexpected route under /api with POST",
+ "method": "POST",
+ "path": "/api/status",
+ "body": {},
+ "raw": null,
+ "status": 405,
+ "elapsed": 0.024492502212524414,
+ "response": "{\"detail\":\"Method Not Allowed\"}"
+}

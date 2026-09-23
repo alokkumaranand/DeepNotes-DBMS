@@ -1,0 +1,11 @@
+{
+ "tag": "E-33",
+ "desc": "E33 jobs limit=101",
+ "method": "GET",
+ "path": "/api/jobs?limit=101",
+ "body": null,
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.015002012252807617,
+ "response": "{\"detail\":\"query.limit: Input should be less than or equal to 100\"}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-14",
+ "desc": "Capture note 11/30 [K] Idea",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Idea: a browser extension that captures the active tab text and pushes it to DeepNotes with the URL. The tracking-by-default idea from the earlier note needs a privacy toggle.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.0492396354675293,
+ "response": "{\"id\":13,\"content\":\"Idea: a browser extension that captures the active tab text and pushes it to DeepNotes with the URL. The tracking-by-default idea from the earlier note needs a privacy toggle.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.5757086,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>DeepNotes — local notes</title>
+  <style>
+    :root { --ink: #172e36; --muted: #52666f; --line: #cbd8dc; --accent: #075e62; --paper: #fff; --bg: #f2f6f6; --error: #9b2530; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    header, main, footer { width: min(1120px, calc(100% - 32px)); margin: auto; }
+    header { padding: 28px 0 16px; }
+    h1 { margin: 0; font-size: 1.8rem; letter-spacing: -.04em; }
+    h2 { margin: 0 0 12px; font-size: 1.25rem; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    h4 { margin: 16px 0 8px; }
+    p { margin: 8px 0; }
+    a { color: var(--accent); overflow-wrap: anywhere; }
+    nav { display: flex; gap: 8px 20px; flex-wrap: wrap; margin-top: 16px; }
+    .skip { position: absolute; top: -100px; left: 16px; background: white; padding: 10px; z-index: 2; }
+    .skip:focus { top: 8px; }
+    .subtitle, .muted, .meta, small { color: var(--muted); }
+    .meta, small { font-size: .88rem; }
+    .panel { padding: 22px; border: 1px solid var(--line); background: var(--paper); border-radius: 12px; margin-bottom: 20px; min-width: 0; scroll-margin-top: 16px; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    label { display: block; font-weight: 600; margin: 12px 0 5px; }
+    input, textarea, select, button { font: inherit; }
+    input, textarea, select { width: 100%; padding: 10px 12px; color: var(--ink); background: white; border: 1px solid #8a9fa8; border-radius: 6px; }
+    textarea { resize: vertical; min-height: 92px; }
+    button { padding: 9px 15px; border: 1px solid var(--accent); border-radius: 6px; color: white; background: var(--accent); cursor: pointer; font-weight: 600; }
+    button.secondary { background: white; color: var(--accent); }
+    button.danger { color: var(--error); border-color: var(--error); background: white; }
+    button:disabled { opacity: .6; cursor: wait; }
+    :focus-visible { outline: 3px solid #ba6900; outline-offset: 3px; }
+    .actions, .heading-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+    .heading-row { justify-content: space-between; margin: 0 0 12px; }
+    .heading-row h2 { margin: 0; }
+    .notice { padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; margin: 12px 0; }
+    .demo { background: #fff0c5; color: #643d00; border-color: #d09a29; font-weight: 600; }
+    .error { color: var(--error); }
+    .message { min-height: 1.5em; margin: 8px 0 0; font-size: .92rem; }
+    .card { border-top: 1px solid var(--line); padding: 18px 0; overflow-wrap: anywhere; }
+    .card:first-child { border-top: 0; padding-top: 4px; }
+    .card:last-child { padding-bottom: 0; }
+    .text { white-space: pre-wrap; overflow-wrap: anywhere; }
+    .badge { display: inline-block; padding: 2px 8px; border: 1px solid var(--line); border-radius: 20px; font-size: .8rem; margin: 0 5px 4px 0; background: var(--bg); }
+    .badge.failed { color: var(--error); border-color: #dca1a6; }
+    .interpretation { padding: 10px 14px; margin-top: 12px; border-left: 3px solid #76a8a8; background: #f4f8f8; }
+    .references { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .answer { font-size: 1.03rem; }
+    details { margin-top: 12px; }
+    summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
+    details.panel > summary { font-size: 1.25rem; }
+    .counts { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+    .inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    footer { padding: 4px 0 28px; font-size: .88rem; color: var(--muted); }
+    [hidden] { display: none !important; }
+    @media (max-width: 740px) { .columns, .inline-fields { grid-template-columns: 1fr; } .panel { padding: 16px; } header { padding-top: 20px; } }
+    @media (prefers-reduced-motion: no-preference) { button { transition: background-color .15s; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <h1>DeepNotes</h1>
+    <p class="subtitle">Capture now. Add context as your notes take shape.</p>
+    <div id="demo-banner" class="notice demo" role="status" hidden>DEMO MODE — deterministic sample model output, not meaningful AI. Do not treat demo answers as reliable information.</div>
+    <div id="connection" class="notice" role="status">Connecting to the local application…</div>
+    <nav aria-label="Sections">
+      <a href="#capture">Capture</a><a href="#recent">Recent notes</a><a href="#ask">Ask</a><a href="#guidance">Guidance</a><a href="#history">History</a><a href="#operations">Jobs</a><a href="#structure">Structure</a>
+    </nav>
+  </header>
+  <main id="main">
+    <noscript><p class="notice error">JavaScript is required to use this local application.</p></noscript>
+    <div class="columns">
+      <section id="capture" class="panel" aria-labelledby="capture-title">
+        <h2 id="capture-title">Capture a note</h2>
+        <form id="capture-form">
+          <label for="note-content">Note</label>
+          <textarea id="note-content" name="content" rows="6" required placeholder="An idea, a question, a useful excerpt…"></textarea>
+          <details>
+            <summary>Source (optional)</summary>
+            <label for="source-url">Source URL</label>
+            <input id="source-url" name="source_url" type="url" placeholder="https://example.com" aria-describedby="source-help">
+            <small id="source-help">Only http:// or https:// links. No automatic web fetching.</small>
+            <label for="source-title">Source title</label>
+            <input id="source-title" name="source_title" type="text">
+          </details>
+          <div class="actions"><button type="submit">Save note</button></div>
+          <p id="capture-message" class="message" role="status"></p>
+        </form>
+      </section>
+      <section id="ask" class="panel" aria-labelledby="ask-title">
+        <h2 id="ask-title">Ask your notes</h2>
+        <p class="muted">Answers may include general model knowledge. No live web verification.</p>
+        <form id="ask-form">
+          <label for="question">Question</label>
+          <textarea id="question" name="question" rows="3" required></textarea>
+          <div class="actions"><button type="submit">Ask question</button></div>
+          <p id="ask-message" class="message" role="status"></p>
+        </form>
+        <div id="query-result" tabindex="-1" aria-label="Question result"></div>
+      </section>
+    </div>
+    <section id="recent" class="panel" aria-labelledby="recent-title">
+      <div class="heading-row"><h2 id="recent-title">Recent notes</h2><button id="refresh-notes" class="secondary" type="button">Refresh</button></div>
+      <p class="meta">Latest 30 originals. Interpretations are derived and can change; your saved text stays intact.</p>
+      <p id="entries-error" class="message error" role="status"></p>
+      <div id="entries-list"><p class="muted">Loading notes…</p></div>
+    </section>
+    <section id="guidance" class="panel" aria-labelledby="guidance-title">
+      <h2 id="guidance-title">Add guidance</h2>
+      <p class="muted">Explicit context for one note, one class, or all notes. Guidance is saved and schedules reprocessing; class/global guidance also requests structural review.</p>
+      <form id="guidance-form">
+        <div class="inline-fields">
+          <div><label for="guidance-scope">Scope</label><select id="guidance-scope" name="scope"><option value="entry">One entry</option><option value="class">One class / section</option><option value="global">Global — all notes</option></select></div>
+          <div id="guidance-target-wrap"><label id="guidance-target-label" for="guidance-target">Entry ID</label><input id="guidance-target" name="target_id" required placeholder="Copy the ID shown on a note" list="target-options"><datalist id="target-options"></datalist></div>
+        </div>
+        <p id="scope-help" class="meta">Applies only to the entry ID you specify. IDs are sent as strings.</p>
+        <label for="guidance-content">Context or preference</label>
+        <textarea id="guidance-content" name="content" rows="3" required></textarea>
+        <div class="actions"><button type="submit">Save guidance</button></div>
+        <p id="guidance-message" class="message" role="status"></p>
+      </form>
+      <details id="guidance-records"><summary>Recent explicit guidance</summary><p id="guidance-error" class="message error" role="status"></p><div id="guidance-list"></div></details>
+    </section>
+    <section id="history" class="panel" aria-labelledby="history-title">
+      <h2 id="history-title">Question history</h2>
+      <p class="meta">Previous questions and generated answers, including failures. History is not factual source evidence by default.</p>
+      <form id="history-form"><label for="history-search">Search history</label><input id="history-search" type="search" placeholder="Search questions and answers"><div class="actions"><button type="submit" class="secondary">Search / refresh history</button></div></form>
+      <p id="history-error" class="message error" role="status"></p>
+      <div id="history-list"></div>
+    </section>
+    <details id="operations" class="panel">
+      <summary>Jobs &amp; application status</summary>
+      <div id="status-detail" class="notice"></div>
+      <div class="actions"><button id="refresh-jobs" class="secondary" type="button">Refresh jobs</button></div>
+      <p id="jobs-error" class="message error" role="status"></p>
+      <div id="jobs-list"></div>
+    </details>
+    <details id="structure" class="panel">
+      <summary>Structure &amp; versions</summary>
+      <p class="meta">Organization uses bounded samples, not exhaustive clustering. V1 allows up to 128 active classes and 32 changes per proposal.</p>
+      <p id="structure-version"></p>
+      <div class="actions"><button id="reorganize" type="button">Request reorganization</button><button id="refresh-structure" class="secondary" type="button">Refresh structure</button></div>
+      <p id="structure-message" class="message" role="status"></p>
+      <p id="structure-error" class="message error" role="status"></p>
+      <h3>Classes / sections</h3><div id="classes-list"></div>
+      <form id="rollback-form">
+        <h3>Rollback catalog</h3>
+        <p class="meta">Copies a historical catalog into a new version and queues reorganization. It does not delete original notes or rewind history.</p>
+        <label for="rollback-version">Historical version</label><select id="rollback-version" required><option value="">Choose a version…</option></select>
+        <div class="actions"><button type="submit" class="danger">Review rollback…</button></div>
+        <p id="rollback-message" class="message" role="status"></p>
+      </form>
+    </details>
+  </main>
+  <footer>Local DeepNotes · Saved originals are sources, not guarantees of truth. Background refresh pauses while this tab is hidden.</footer>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const pendingGets = new Map();
+    const entryViews = new Map();
+    let currentEntries = [], classes = [], activeVersion = null;
+    let refreshTask = null, pollTimer = null, initialized = false;
+    let jobsSignature = '', structureSignature = '', guidanceSignature = '';
+
+    function node(tag, text, className) {
+      const element = document.createElement(tag);
+      if (text !== undefined && text !== null) element.textContent = String(text);
+      if (className) element.className = className;
+      return element;
+    }
+    function message(id, text, error = false) {
+      const element = $(id);
+      element.textContent = text;
+      element.classList.toggle('error', error);
+    }
+    function date(value) {
+      if (!value) return '';
+      const parsed = new Date(typeof value === 'number' ? value * 1000 : value);
+      return Number.isNaN(parsed.getTime()) ? String(value) : parsed.toLocaleString();
+    }
+    function safeUrl(value) {
+      if (!value || typeof value !== 'string') return null;
+      try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : null; }
+      catch { return null; }
+    }
+    function sourceLink(container, url, title) {
+      const safe = safeUrl(url);
+      if (safe) {
+        const link = node('a', title || url);
+        link.href = safe; link.target = '_blank'; link.rel = 'noopener noreferrer';
+        container.append(link);
+      } else if (title || url) container.append(node('span', title || 'Source URL unavailable (only HTTP/HTTPS links are allowed).', 'muted'));
+    }
+    function field(container, label, value) {
+      if (value === undefined || value === null || value === '') return;
+      const p = node('p', undefined, 'text');
+      p.append(node('strong', label + ': '), node('span', value)); container.append(p);
+    }
+    function badge(text) { return node('span', text, 'badge' + (text === 'failed' ? ' failed' : '')); }
+    function empty(container, text) { container.replaceChildren(node('p', text, 'muted')); }
+    function items(data) {
+      if (!data || !Array.isArray(data.items)) throw new Error('Unexpected list response from the API.');
+      return data.items;
+    }
+    async function request(path, options = {}) {
+      const method = (options.method || 'GET').toUpperCase();
+      // Mutations always use JSON, including action endpoints without parameters.
+      const mutating = !['GET', 'HEAD', 'OPTIONS'].includes(method);
+      const body = mutating ? JSON.stringify(options.body === undefined ? {} : options.body) : undefined;
+      if (method === 'GET' && pendingGets.has(path)) return pendingGets.get(path);
+      const task = (async () => {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), method === 'GET' ? 20000 : 180000);
+        try {
+          const response = await fetch('/api' + path, {
+            method, signal: controller.signal, cache: 'no-store', credentials: 'same-origin',
+            headers: mutating ? { Accept: 'application/json', 'Content-Type': 'application/json' } : { Accept: 'application/json' },
+            body
+          });
+          const data = await response.json().catch(() => null);
+          if (!response.ok) throw new Error(data && typeof data.detail === 'string' ? data.detail : 'API request failed (HTTP ' + response.status + ').');
+          if (data === null) throw new Error('The API returned an invalid JSON response.');
+          return data;
+        } catch (error) {
+          if (error.name === 'AbortError') throw new Error('Request timed out. The server may still be working; refresh before submitting again.');
+          if (error instanceof TypeError) throw new Error('Cannot reach the local API. Check that DeepNotes is running.');
+          throw error;
+        } finally { clearTimeout(timeout); }
+      })();
+      if (method === 'GET') pendingGets.set(path, task);
+      try { return await task; }
+      finally { if (method === 'GET' && pendingGets.get(path) === task) pendingGets.delete(path); }
+    }
+    async function busy(control, action) {
+      if (control.dataset.busy === 'true') return;
+      control.dataset.busy = 'true'; control.setAttribute('aria-busy', 'true');
+      const buttons = control.matches('button') ? [control] : [...control.querySelectorAll('button[type="submit"]')];
+      buttons.forEach(button => button.disabled = true);
+      try { await action(); }
+      finally { buttons.forEach(button => button.disabled = false); control.removeAttribute('aria-busy'); delete control.dataset.busy; }
+    }
+
+    function renderInterpretation(container, interpretation) {
+      container.replaceChildren();
+      if (!interpretation) { container.append(node('p', 'No interpretation yet. Your original note is saved and searchable.', 'muted')); return; }
+      const box = node('div', undefined, 'interpretation');
+      if (interpretation.inherited === true) {
+        const origin = interpretation.origin_version ?? interpretation.origin_version_id ?? interpretation.source_version ?? interpretation.source_version_id;
+        box.append(node('p', 'Inherited interpretation' + (origin != null ? ' from version ' + origin : ' (origin version not provided)') + ' — pending refresh.', 'meta'));
+      }
+      field(box, 'Summary', interpretation.summary);
+      field(box, 'Intent', interpretation.intent);
+      const ids = Array.isArray(interpretation.class_ids) ? interpretation.class_ids : [];
+      field(box, 'Classes', ids.length ? ids.map(id => { const c = classes.find(c => c.id === id); return c ? c.name + ' (' + id + ')' : id; }).join(', ') : 'Unclassified');
+      field(box, 'Rationale', interpretation.rationale);
+      field(box, 'Clarification', interpretation.clarification);
+      container.append(box);
+    }
+    function createEntryView(entry) {
+      const article = node('article', undefined, 'card');
+      const display = node('div');
+      const details = node('details'); details.append(node('summary', 'Add context to this entry'));
+      const form = node('form');
+      const inputId = 'context-' + String(entry.id);
+      const label = node('label', 'Additional context (entry ' + entry.id + ' only)'); label.htmlFor = inputId;
+      const input = node('textarea'); input.id = inputId; input.required = true; input.rows = 2;
+      const action = node('div', undefined, 'actions'); const button = node('button', 'Save entry context'); button.type = 'submit'; action.append(button);
+      const feedback = node('p', '', 'message'); feedback.setAttribute('role', 'status');
+      form.append(label, input, action, feedback); details.append(form); article.append(display, details);
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        busy(form, async () => {
+          feedback.classList.remove('error'); feedback.textContent = 'Saving entry context…';
+          try {
+            const content = input.value.trim(); if (!content) throw new Error('Enter some context first.');
+            await request('/guidance', { method: 'POST', body: { scope: 'entry', target_id: String(entry.id), content } });
+            if (input.value.trim() === content) input.value = '';
+            feedback.textContent = 'Context saved for this entry only. Reprocessing queued.';
+            await Promise.all([loadEntries(), loadGuidance(), loadStatus()]);
+          } catch (error) { feedback.textContent = error.message; feedback.classList.add('error'); }
+        });
+      });
+      return { article, display, signature: '' };
+    }
+    async function loadEntries() {
+      try {
+        const entries = items(await request('/entries?limit=30&offset=0'));
+        const list = $('entries-list');
+        if (!entryViews.size) list.replaceChildren();
+        const keep = new Set(entries.map(entry => String(entry.id)));
+        for (const [id, view] of entryViews) {
+          // Keep an open context form while the user is composing, even if it ages out of the recent window.
+          if (!keep.has(id) && !view.article.querySelector('details').open) { view.article.remove(); entryViews.delete(id); }
+        }
+        entries.forEach((entry, index) => {
+          const id = String(entry.id);
+          let view = entryViews.get(id);
+          if (!view) { view = createEntryView(entry); entryViews.set(id, view); }
+          const signature = JSON.stringify([entry, classes]);
+          if (view.signature !== signature) {
+            view.display.replaceChildren();
+            const meta = node('p', undefined, 'meta'); meta.append(badge(entry.status || 'unknown'), node('span', 'Entry ' + id + ' · ' + date(entry.created_at)));
+            view.display.append(meta, node('p', entry.content, 'text'));
+            if (entry.source_url || entry.source_title) { const source = node('p', undefined, 'meta'); sourceLink(source, entry.source_url, entry.source_title); view.display.append(source); }
+            const interpretation = node('div'); renderInterpretation(interpretation, entry.interpretation); view.display.append(interpretation);
+            view.signature = signature;
+          }
+          if (list.children[index] !== view.article) list.insertBefore(view.article, list.children[index] || null);
+        });
+        if (!entries.length && !entryViews.size) empty(list, 'No notes yet. Save your first note above.');
+        currentEntries = entries; updateTargets(); message('entries-error', '');
+      } catch (error) { message('entries-error', 'Could not refresh notes: ' + error.message, true); }
+    }
+
+    function renderAnswer(container, result) {
+      container.replaceChildren();
+      container.append(node('h3', 'Answer'));
+      container.append(node('p', result.answer || 'No answer was generated.', 'text answer'));
+      if (result.status && !['completed', 'success', 'succeeded'].includes(result.status)) field(container, 'Status', result.status);
+      if (result.error || result.failure_code) field(container, 'Failure', result.error || result.failure_code);
+      const references = node('section', undefined, 'references'); references.append(node('h3', 'References & related notes'));
+      const ref = result.references || {};
+      field(references, 'Saved-note coverage', ref.coverage || 'Not reported');
+      field(references, 'General model knowledge', ref.general_knowledge === true ? 'Used — not independently verified' : ref.general_knowledge === false ? 'Not used' : 'Not reported');
+      references.append(node('p', 'No live web verification. Source links are saved metadata, not freshly checked pages.', 'meta'));
+      field(references, 'Coverage explanation', ref.explanation);
+      const notes = Array.isArray(ref.notes) ? ref.notes : [];
+      if (!notes.length) references.append(node('p', 'No related saved notes returned.', 'muted'));
+      for (const note of notes) {
+        const card = node('article', undefined, 'card');
+        card.append(node('h4', 'Note ' + note.id + (note.cited === true ? ' · cited' : ' · related, not cited')), node('p', note.content, 'text'));
+        if (note.source_title || note.source_url) { const source = node('p', undefined, 'meta'); sourceLink(source, note.source_url, note.source_title); card.append(source); }
+        references.append(card);
+      }
+      container.append(references);
+    }
+    async function loadHistory() {
+      try {
+        const data = items(await request('/interactions?q=' + encodeURIComponent($('history-search').value.trim()) + '&limit=20'));
+        const list = $('history-list'); list.replaceChildren();
+        if (!data.length) empty(list, 'No matching questions yet.');
+        for (const interaction of data) {
+          const details = node('details', undefined, 'card');
+          details.append(node('summary', (interaction.question || 'Question ' + interaction.id) + ' · ' + (interaction.status || 'unknown')));
+          details.append(node('p', 'Interaction ' + interaction.id + ' · ' + date(interaction.created_at) + ' · generated response / saved reference snapshot', 'meta'));
+          const answer = node('div'); renderAnswer(answer, interaction); details.append(answer); list.append(details);
+        }
+        message('history-error', '');
+      } catch (error) { message('history-error', 'Could not load history: ' + error.message, true); }
+    }
+    function updateTargets() {
+      const scope = $('guidance-scope').value;
+      $('guidance-target-wrap').hidden = scope === 'global';
+      $('guidance-target').required = scope !== 'global';
+      $('guidance-target').disabled = scope === 'global';
+      $('guidance-target-label').textContent = scope === 'class' ? 'Class ID' : 'Entry ID';
+      $('guidance-target').placeholder = scope === 'class' ? 'Choose or enter a class ID' : 'Copy the ID shown on a note';
+      $('scope-help').textContent = scope === 'global' ? 'Applies globally to all notes. No target ID will be sent.' : scope === 'class' ? 'Applies only to the specified class / section; also requests structural review.' : 'Applies only to the entry ID you specify. IDs are sent as strings.';
+      const options = $('target-options'); options.replaceChildren();
+      const targets = scope === 'class' ? classes.map(c => [c.id, c.name]) : currentEntries.map(e => [String(e.id), String(e.content).slice(0, 80)]);
+      for (const [id, title] of targets) { const option = node('option', title); option.value = id; options.append(option); }
+    }
+    async function loadGuidance() {
+      try {
+        const records = items(await request('/guidance'));
+        const signature = JSON.stringify(records);
+        if (signature !== guidanceSignature) {
+          const list = $('guidance-list'); list.replaceChildren();
+          if (!records.length) empty(list, 'No explicit guidance saved yet.');
+          for (const record of records) {
+            const card = node('article', undefined, 'card');
+            card.append(node('p', record.scope + (record.target_id != null ? ' · ' + record.target_id : ' · all notes') + ' · ' + date(record.created_at), 'meta'), node('p', record.content, 'text')); list.append(card);
+          }
+          guidanceSignature = signature;
+        }
+        message('guidance-error', '');
+      } catch (error) { message('guidance-error', error.message, true); }
+    }
+    async function loadStatus() {
+      try {
+        const status = await request('/status');
+        $('demo-banner').hidden = status.demo_mode !== true;
+        const connection = $('connection'); connection.classList.remove('error');
+        connection.textContent = 'Local API connected · Version ' + status.active_version + ' · ' + (status.worker_running ? 'Worker running' : 'Worker not running') + (status.model_configured ? '' : ' · Model not configured — capture and history remain available; model jobs may fail.');
+        const detail = $('status-detail'); detail.replaceChildren();
+        const counts = node('div', undefined, 'counts');
+        for (const state of ['pending', 'running', 'completed', 'failed', 'superseded']) counts.append(node('span', state + ': ' + (status.jobs?.[state] ?? 0)));
+        detail.append(counts);
+        field(detail, 'Active version', status.active_version);
+        field(detail, 'Model configured', status.model_configured ? 'Yes' : 'No');
+        field(detail, 'Demo mode', status.demo_mode ? 'ON — sample output only' : 'Off');
+        field(detail, 'Worker running', status.worker_running ? 'Yes' : 'No');
+        if (status.last_worker_error) detail.append(node('p', 'Last worker error: ' + status.last_worker_error, 'text error'));
+        if (activeVersion !== status.active_version) { activeVersion = status.active_version; await loadStructure(); }
+      } catch (error) {
+        // Preserve any known demo warning when disconnected.
+        message('connection', 'Status unavailable: ' + error.message + ' Displayed records may be stale.', true);
+      }
+    }
+    async function loadJobs() {
+      try {
+        const jobs = items(await request('/jobs?limit=30'));
+        const signature = JSON.stringify(jobs);
+        if (signature !== jobsSignature && !$('jobs-list').querySelector('[data-busy="true"]')) {
+          const list = $('jobs-list'); list.replaceChildren();
+          if (!jobs.length) empty(list, 'No jobs yet.');
+          for (const job of jobs) {
+            const state = job.state || job.status || 'unknown';
+            const card = node('article', undefined, 'card');
+            const heading = node('p'); heading.append(badge(state), node('strong', (job.kind || 'Job') + ' · ' + job.id)); card.append(heading);
+            field(card, 'Scope', job.scope ?? job.entry_id);
+            field(card, 'Attempts', job.attempts ?? 0);
+            field(card, 'Failure code', job.failure_code);
+            field(card, 'Error', job.error || job.last_error || job.error_message);
+            if (state === 'failed') {
+              const button = node('button', 'Retry failed job', 'secondary'); button.type = 'button';
+              const feedback = node('p', '', 'message'); feedback.setAttribute('role', 'status');
+              button.addEventListener('click', () => busy(button, async () => {
+                try {
+                  feedback.textContent = 'Requesting retry…'; feedback.classList.remove('error');
+                  await request('/jobs/' + encodeURIComponent(String(job.id)) + '/retry', { method: 'POST' });
+                  feedback.textContent = 'Retry queued (current-version work replaces stale scopes).'; jobsSignature = '';
+                  await loadStatus();
+                } catch (error) { feedback.textContent = error.message; feedback.classList.add('error'); }
+              }).then(() => loadJobs()));
+              card.append(button, feedback);
+            }
+            list.append(card);
+          }
+          jobsSignature = signature;
+        }
+        message('jobs-error', '');
+      } catch (error) { message('jobs-error', error.message, true); }
+    }
+    async function loadStructure() {
+      try {
+        const structure = await request('/structure');
+        if (!Array.isArray(structure.classes) || !Array.isArray(structure.versions)) throw new Error('Unexpected structure response.');
+        const signature = JSON.stringify(structure);
+        if (signature !== structureSignature) {
+          classes = structure.classes; updateTargets();
+          $('structure-version').textContent = 'Active structure version: ' + structure.version + ' · ' + classes.length + ' classes';
+          const list = $('classes-list'); list.replaceChildren();
+          if (!classes.length) empty(list, 'No classes returned.');
+          for (const c of classes) {
+            const card = node('article', undefined, 'card'); card.append(node('h4', c.name + ' · ' + c.id));
+            field(card, 'Description', c.description);
+            field(card, 'Aliases', Array.isArray(c.aliases) ? c.aliases.join(', ') : c.aliases);
+            field(card, 'Parent', c.parent_id);
+            field(card, 'Routing hints', Array.isArray(c.routing_hints) ? c.routing_hints.join(', ') : c.routing_hints);
+            list.append(card);
+          }
+          const select = $('rollback-version'), selected = select.value;
+          select.replaceChildren(); const placeholder = node('option', 'Choose a historical version…'); placeholder.value = ''; select.append(placeholder);
+          for (const version of structure.versions) {
+            if (String(version.id) === String(structure.version)) continue;
+            const option = node('option', 'Version ' + version.id + ' · ' + (version.reason || '') + ' · ' + date(version.created_at)); option.value = String(version.id); select.append(option);
+          }
+          if ([...select.options].some(option => option.value === selected)) select.value = selected;
+          structureSignature = signature;
+        }
+        message('structure-error', '');
+      } catch (error) { message('structure-error', error.message, true); }
+    }
+
+    $('capture-form').addEventListener('submit', event => {
+      event.preventDefault(); busy(event.currentTarget, async () => {
+        message('capture-message', 'Saving note…');
+        try {
+          const content = $('note-content').value, url = $('source-url').value.trim(), title = $('source-title').value.trim();
+          if (!content.trim()) throw new Error('Enter a note first.');
+          if (url && !safeUrl(url)) throw new Error('Source URL must be an absolute http:// or https:// URL.');
+          const payload = { content }; if (url) payload.source_url = url; if (title) payload.source_title = title;
+          const entry = await request('/entries', { method: 'POST', body: payload });
+          if ($('note-content').value === content) $('note-content').value = '';
+          if ($('source-url').value.trim() === url) $('source-url').value = '';
+          if ($('source-title').value.trim() === title) $('source-title').value = '';
+          message('capture-message', 'Saved entry ' + entry.id + '. Organization runs in the background.');
+          await Promise.all([loadEntries(), loadStatus()]);
+        } catch (error) { message('capture-message', error.message, true); }
+      });
+    });
+    $('ask-form').addEventListener('submit', event => {
+      event.preventDefault(); busy(event.currentTarget, async () => {
+        message('ask-message', 'Working on your question…'); $('query-result').replaceChildren();
+        try {
+          const question = $('question').value.trim(); if (!question) throw new Error('Enter a question first.');
+          const result = await request('/queries', { method: 'POST', body: { question } });
+          renderAnswer($('query-result'), result);
+          message('ask-message', 'Question ' + result.id + ' · ' + (result.status || 'answered'));
+        } catch (error) { message('ask-message', 'No answer available: ' + error.message + ' Check history before retrying if the request timed out.', true); }
+        await loadHistory();
+      });
+    });
+    $('guidance-scope').addEventListener('change', () => { $('guidance-target').value = ''; updateTargets(); });
+    $('guidance-form').addEventListener('submit', event => {
+      event.preventDefault(); busy(event.currentTarget, async () => {
+        message('guidance-message', 'Saving guidance…');
+        try {
+          const scope = $('guidance-scope').value, content = $('guidance-content').value.trim();
+          if (!content) throw new Error('Enter guidance first.');
+          const payload = { scope, content };
+          if (scope !== 'global') { payload.target_id = $('guidance-target').value.trim(); if (!payload.target_id) throw new Error('Specify a target ID.'); }
+          await request('/guidance', { method: 'POST', body: payload });
+          if ($('guidance-content').value.trim() === content) $('guidance-content').value = '';
+          message('guidance-message', 'Saved ' + scope + ' guidance' + (payload.target_id ? ' for ' + payload.target_id : ' for all notes') + '. Reprocessing requested.');
+          await Promise.all([loadGuidance(), loadEntries(), loadStatus()]);
+        } catch (error) { message('guidance-message', error.message, true); }
+      });
+    });
+    $('history-form').addEventListener('submit', event => { event.preventDefault(); busy(event.currentTarget, loadHistory); });
+    $('refresh-notes').addEventListener('click', event => busy(event.currentTarget, loadEntries));
+    $('refresh-jobs').addEventListener('click', event => busy(event.currentTarget, async () => { await Promise.all([loadJobs(), loadStatus()]); }));
+    $('refresh-structure').addEventListener('click', event => busy(event.currentTarget, loadStructure));
+    $('reorganize').addEventListener('click', event => busy(event.currentTarget, async () => {
+      message('structure-message', 'Requesting structural review…');
+      try { const result = await request('/structure/reorganize', { method: 'POST' }); message('structure-message', 'Structural review queued as job ' + result.job_id + '.'); await Promise.all([loadStatus(), loadJobs()]); }
+      catch (error) { message('structure-message', error.message, true); }
+    }));
+    $('rollback-form').addEventListener('submit', event => {
+      event.preventDefault(); busy(event.currentTarget, async () => {
+        const value = $('rollback-version').value;
+        if (!value || !Number.isSafeInteger(Number(value))) { message('rollback-message', 'Choose a valid historical version.', true); return; }
+        if (!window.confirm('Restore catalog version ' + value + ' into a NEW version and queue reorganization? Original notes and version history will be preserved.')) return;
+        message('rollback-message', 'Publishing rollback…');
+        try {
+          const result = await request('/structure/rollback', { method: 'POST', body: { version_id: Number(value) } });
+          message('rollback-message', 'Rollback published as new version ' + result.version + '. Reorganization queued.');
+          await Promise.all([loadStructure(), loadEntries(), loadStatus()]);
+        } catch (error) { message('rollback-message', error.message, true); }
+      });
+    });
+    $('operations').addEventListener('toggle', () => { if ($('operations').open && !document.hidden) loadJobs(); });
+    $('structure').addEventListener('toggle', () => { if ($('structure').open && !document.hidden) loadStructure(); });
+    $('guidance-records').addEventListener('toggle', () => { if ($('guidance-records').open && !document.hidden) loadGuidance(); });
+    // Anchor navigation opens the relevant disclosure without custom keyboard behavior.
+    function openAnchor() { const target = document.getElementById(location.hash.slice(1)); if (target?.tagName === 'DETAILS') target.open = true; }
+    window.addEventListener('hashchange', openAnchor); openAnchor();
+
+    async function refresh() {
+      if (document.hidden) return;
+      if (refreshTask) return refreshTask;
+      refreshTask = (async () => {
+        const tasks = [loadStatus(), loadEntries()];
+        if (!initialized) tasks.push(loadHistory(), loadGuidance());
+        if ($('operations').open) tasks.push(loadJobs());
+        if ($('structure').open) tasks.push(loadStructure());
+        if ($('guidance-records').open && initialized) tasks.push(loadGuidance());
+        await Promise.all(tasks); initialized = true;
+      })();
+      try { await refreshTask; } finally { refreshTask = null; }
+    }
+    async function poll() {
+      clearTimeout(pollTimer);
+      await refresh();
+      clearTimeout(pollTimer);
+      if (!document.hidden) pollTimer = setTimeout(poll, 8000);
+    }
+    document.addEventListener('visibilitychange', () => { clearTimeout(pollTimer); if (!document.hidden) poll(); });
+    updateTargets(); poll();
+  </script>
+</body>
+</html>

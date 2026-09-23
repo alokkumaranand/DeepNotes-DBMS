@@ -1,0 +1,15 @@
+{
+ "tag": "A-26",
+ "desc": "Capture note 22/30 [V] Meeting note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Meeting note: with Arjun, we decided the retrieval should be lexical plus graph, and embeddings are deferred to v2. He will own the structure review.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.0261075496673584,
+ "response": "{\"id\":24,\"content\":\"Meeting note: with Arjun, we decided the retrieval should be lexical plus graph, and embeddings are deferred to v2. He will own the structure review.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.8370953,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

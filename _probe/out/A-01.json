@@ -1,0 +1,11 @@
+{
+ "tag": "A-01",
+ "desc": "Baseline status before any new capture",
+ "method": "GET",
+ "path": "/api/status",
+ "body": null,
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.008398771286010742,
+ "response": "{\"jobs\":{\"pending\":0,\"running\":0,\"completed\":2,\"failed\":0,\"superseded\":0},\"active_version\":1,\"model_configured\":true,\"demo_mode\":false,\"worker_running\":true,\"last_worker_error\":null}"
+}

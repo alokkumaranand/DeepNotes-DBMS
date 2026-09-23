@@ -1,0 +1,15 @@
+{
+ "tag": "A-15",
+ "desc": "Capture note 12/30 [L] Recipe",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Recipe: Dal tadka - boil toor dal with turmeric, then temper cumin, garlic, dried red chilli, and curry leaves in ghee. Finish with lemon.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.013145685195922852,
+ "response": "{\"id\":14,\"content\":\"Recipe: Dal tadka - boil toor dal with turmeric, then temper cumin, garlic, dried red chilli, and curry leaves in ghee. Finish with lemon.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.625514,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

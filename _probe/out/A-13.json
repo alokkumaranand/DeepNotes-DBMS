@@ -1,0 +1,15 @@
+{
+ "tag": "A-13",
+ "desc": "Capture note 10/30 [J] SQLite note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "SQLite FTS5 note: bm25() returns lower is better; you must ORDER BY rank, not by bm25 ascending. External content tables need triggers to stay in sync.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.0390775203704834,
+ "response": "{\"id\":12,\"content\":\"SQLite FTS5 note: bm25() returns lower is better; you must ORDER BY rank, not by bm25 ascending. External content tables need triggers to stay in sync.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.5360835,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

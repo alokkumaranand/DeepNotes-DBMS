@@ -1,0 +1,15 @@
+{
+ "tag": "A-21",
+ "desc": "Capture note 17/30 [Q] Question to answer",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Question I need to answer: why does a Python default argument get evaluated once? Because def is executed once; the default object is shared across calls.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.016251087188720703,
+ "response": "{\"id\":19,\"content\":\"Question I need to answer: why does a Python default argument get evaluated once? Because def is executed once; the default object is shared across calls.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.712186,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

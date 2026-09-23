@@ -1,0 +1,15 @@
+{
+ "tag": "A-33",
+ "desc": "Capture note 28/30 [AB] Feedback again",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Feedback on DeepNotes again: I want to see which notes were used to answer, not just cited ids. The distinction between cited and related is subtle.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.015569448471069336,
+ "response": "{\"id\":30,\"content\":\"Feedback on DeepNotes again: I want to see which notes were used to answer, not just cited ids. The distinction between cited and related is subtle.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174140.478868,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

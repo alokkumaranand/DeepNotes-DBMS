@@ -1,0 +1,13 @@
+{
+ "tag": "G-15",
+ "desc": "G13 restore the learned structure (roll forward to version 6)",
+ "method": "POST",
+ "path": "/api/structure/rollback",
+ "body": {
+  "version_id": 6
+ },
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.034116268157958984,
+ "response": "{\"version\":9}"
+}

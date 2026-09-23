@@ -1,0 +1,13 @@
+{
+ "tag": "E-30",
+ "desc": "E30 store emoji + unicode + RTL content",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Emoji test 🧠📚🚀 and RTL: مرحبا بالعالم, CJK: 你好世界, math: ∑∫≈"
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.012221336364746094,
+ "response": "{\"id\":36,\"content\":\"Emoji test 🧠📚🚀 and RTL: مرحبا بالعالم, CJK: 你好世界, math: ∑∫≈\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790175671.2686536,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

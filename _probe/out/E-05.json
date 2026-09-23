@@ -1,0 +1,14 @@
+{
+ "tag": "E-05",
+ "desc": "E05 source_url not http(s)",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "note with bad url",
+  "source_url": "javascript:alert(1)"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.012278556823730469,
+ "response": "{\"detail\":\"body.source_url: Value error, Source URL must use http or https\"}"
+}

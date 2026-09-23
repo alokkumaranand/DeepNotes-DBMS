@@ -1,0 +1,15 @@
+{
+ "tag": "A-24",
+ "desc": "Capture note 20/30 [T] Health",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Health: dentist appointment moved to next Tuesday 4pm. Bring the insurance card.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.02912759780883789,
+ "response": "{\"id\":22,\"content\":\"Health: dentist appointment moved to next Tuesday 4pm. Bring the insurance card.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.7919285,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

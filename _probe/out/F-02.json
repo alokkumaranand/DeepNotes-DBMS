@@ -1,0 +1,11 @@
+{
+ "tag": "F-02",
+ "desc": "Trigger manual reorganize",
+ "method": "POST",
+ "path": "/api/structure/reorganize",
+ "body": null,
+ "raw": null,
+ "status": 415,
+ "elapsed": 0.012794256210327148,
+ "response": "{\"detail\":\"Use application/json\"}"
+}

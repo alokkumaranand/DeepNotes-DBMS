@@ -1,0 +1,15 @@
+{
+ "tag": "A-09",
+ "desc": "Capture note 7/30 [G] Unrelated adjacent",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Grocery list: 2kg basmati rice, 6 eggs, paneer, tomatoes, coriander, and dish soap.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.032488107681274414,
+ "response": "{\"id\":9,\"content\":\"Grocery list: 2kg basmati rice, 6 eggs, paneer, tomatoes, coriander, and dish soap.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173623.087898,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

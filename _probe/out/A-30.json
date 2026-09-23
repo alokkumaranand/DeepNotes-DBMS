@@ -1,0 +1,15 @@
+{
+ "tag": "A-30",
+ "desc": "Capture note 25/30 [Y] Bug note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Bug I saw: in DeepNotes, if two structure reviews queue at once, one gets superseded. That is by design (coalescing).",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.04146265983581543,
+ "response": "{\"id\":27,\"content\":\"Bug I saw: in DeepNotes, if two structure reviews queue at once, one gets superseded. That is by design (coalescing).\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174140.3680928,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

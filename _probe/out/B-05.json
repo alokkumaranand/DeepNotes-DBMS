@@ -1,0 +1,14 @@
+{
+ "tag": "B-05",
+ "desc": "Global guidance: second, more specific rule (conflict resolution)",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "global",
+  "content": "For Java questions specifically, bullets are fine but always include a tiny code-shaped example. This overrides the general bullet rule."
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.026156902313232422,
+ "response": "{\"id\":4}"
+}

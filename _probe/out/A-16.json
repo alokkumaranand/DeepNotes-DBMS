@@ -1,0 +1,15 @@
+{
+ "tag": "A-16",
+ "desc": "Capture note 13/30 [M] Interview prep",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Interview prep: for system design, always clarify scale first. Estimate QPS and storage, then talk about consistency vs availability (CAP). Practice the URL shortener.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.024272441864013672,
+ "response": "{\"id\":15,\"content\":\"Interview prep: for system design, always clarify scale first. Estimate QPS and storage, then talk about consistency vs availability (CAP). Practice the URL shortener.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.6508453,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

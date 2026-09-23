@@ -1,0 +1,11 @@
+{
+ "tag": "E-18",
+ "desc": "E18 entries limit=0 (below min)",
+ "method": "GET",
+ "path": "/api/entries?limit=0",
+ "body": null,
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.012312650680541992,
+ "response": "{\"detail\":\"query.limit: Input should be greater than or equal to 1\"}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-28",
+ "desc": "Capture note 24/30 [X] Quote",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Quote: 'The purpose of a system is what it does.' - Stafford Beer. Good counter to design intentions.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.011937379837036133,
+ "response": "{\"id\":26,\"content\":\"Quote: 'The purpose of a system is what it does.' - Stafford Beer. Good counter to design intentions.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174014.8878171,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

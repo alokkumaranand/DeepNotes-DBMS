@@ -1,0 +1,11 @@
+{
+ "tag": "D-01",
+ "desc": "Status / job counters",
+ "method": "GET",
+ "path": "/api/status",
+ "body": null,
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.01895284652709961,
+ "response": "{\"jobs\":{\"pending\":0,\"running\":0,\"completed\":126,\"failed\":2,\"superseded\":73},\"active_version\":6,\"model_configured\":true,\"demo_mode\":false,\"worker_running\":true,\"last_worker_error\":null}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-12",
+ "desc": "Capture note 9/30 [I] Book note",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Book note: In 'Thinking in Systems', Meadows says leverage points are often counterintuitive - the highest leverage is changing the goal of the system, not the parameters.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.018933773040771484,
+ "response": "{\"id\":11,\"content\":\"Book note: In 'Thinking in Systems', Meadows says leverage points are often counterintuitive - the highest leverage is changing the goal of the system, not the parameters.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.5174217,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

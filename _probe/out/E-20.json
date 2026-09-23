@@ -1,0 +1,11 @@
+{
+ "tag": "E-20",
+ "desc": "E20 entries offset=-1",
+ "method": "GET",
+ "path": "/api/entries?offset=-1",
+ "body": null,
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.014542341232299805,
+ "response": "{\"detail\":\"query.offset: Input should be greater than or equal to 0\"}"
+}

@@ -1,0 +1,11 @@
+{
+ "tag": "E-26",
+ "desc": "E26 static path traversal attempt",
+ "method": "GET",
+ "path": "/../deepnotes/config.py",
+ "body": null,
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.012958765029907227,
+ "response": "{\"detail\":\"Not Found\"}"
+}

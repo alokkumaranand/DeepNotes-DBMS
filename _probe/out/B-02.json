@@ -1,0 +1,15 @@
+{
+ "tag": "B-02",
+ "desc": "Entry-scoped guidance: disambiguate a note that looks like the Java project",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "entry",
+  "target_id": "18",
+  "content": "This note is about my own DeepNotes DBMS college project, not the Java coursework. Keep it separate from Java study material."
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.02398991584777832,
+ "response": "{\"id\":1}"
+}

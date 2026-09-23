@@ -1,0 +1,14 @@
+{
+ "tag": "E-28",
+ "desc": "E28 store HTML/script content (XSS probe)",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "<script>alert('xss')</script> <img src=x onerror=alert(1)>",
+  "source_title": "<b>bold</b>"
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.02429342269897461,
+ "response": "{\"id\":34,\"content\":\"<script>alert('xss')</script> <img src=x onerror=alert(1)>\",\"source_url\":\"\",\"source_title\":\"<b>bold</b>\",\"created_at\":1790175671.2237442,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

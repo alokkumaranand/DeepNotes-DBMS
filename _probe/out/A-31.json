@@ -1,0 +1,15 @@
+{
+ "tag": "A-31",
+ "desc": "Capture note 26/30 [Z] Java exceptions",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Java: checked vs unchecked exceptions. Checked must be declared or caught; unchecked are RuntimeException subclasses. try-with-resources closes in reverse order.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.05364871025085449,
+ "response": "{\"id\":28,\"content\":\"Java: checked vs unchecked exceptions. Checked must be declared or caught; unchecked are RuntimeException subclasses. try-with-resources closes in reverse order.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790174140.3861256,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

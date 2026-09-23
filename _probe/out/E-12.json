@@ -1,0 +1,14 @@
+{
+ "tag": "E-12",
+ "desc": "E12 guidance entry scope with no target",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "entry",
+  "content": "no target given"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.013266801834106445,
+ "response": "{\"detail\":\"body: Value error, Entry/class guidance needs a target ID\"}"
+}

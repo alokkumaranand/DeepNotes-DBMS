@@ -1,0 +1,15 @@
+{
+ "tag": "G-11",
+ "desc": "G10 class-scoped guidance on a REAL class id",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "class",
+  "target_id": "reading-book-notes",
+  "content": "Book notes should always name the author and the book title."
+ },
+ "raw": null,
+ "status": 404,
+ "elapsed": 0.020168542861938477,
+ "response": "{\"detail\":\"Class not found in active structure\"}"
+}

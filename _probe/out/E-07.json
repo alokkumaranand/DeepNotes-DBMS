@@ -1,0 +1,13 @@
+{
+ "tag": "E-07",
+ "desc": "E07 missing required content field",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "source_title": "no content"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.003173351287841797,
+ "response": "{\"detail\":\"body.content: Field required\"}"
+}

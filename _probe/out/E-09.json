@@ -1,0 +1,11 @@
+{
+ "tag": "E-09",
+ "desc": "E09 malformed JSON body",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": null,
+ "raw": "{not json",
+ "status": 422,
+ "elapsed": 0.001947641372680664,
+ "response": "{\"detail\":\"body.1: JSON decode error\"}"
+}

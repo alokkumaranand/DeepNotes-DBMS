@@ -1,0 +1,11 @@
+{
+ "tag": "E-24",
+ "desc": "E24 retry a job id that already completed",
+ "method": "POST",
+ "path": "/api/jobs/1/retry",
+ "body": null,
+ "raw": null,
+ "status": 415,
+ "elapsed": 0.015250921249389648,
+ "response": "{\"detail\":\"Use application/json\"}"
+}

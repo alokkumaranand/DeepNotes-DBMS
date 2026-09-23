@@ -1,0 +1,13 @@
+{
+ "tag": "E-02",
+ "desc": "E02 whitespace-only note content",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "    \n\t  "
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.0056438446044921875,
+ "response": "{\"detail\":\"body.content: Value error, Enter a nonblank note\"}"
+}

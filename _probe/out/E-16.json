@@ -1,0 +1,13 @@
+{
+ "tag": "E-16",
+ "desc": "E16 empty question",
+ "method": "POST",
+ "path": "/api/queries",
+ "body": {
+  "question": ""
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.01405477523803711,
+ "response": "{\"detail\":\"body.question: String should have at least 1 character\"}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-03",
+ "desc": "Capture note 2/30 [B] Java generics",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Java generics type erasure: List<String> becomes List at runtime, so you cannot do instanceof List<String> or new T[]. This is why generic varargs gives unchecked warnings.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.043657779693603516,
+ "response": "{\"id\":4,\"content\":\"Java generics type erasure: List<String> becomes List at runtime, so you cannot do instanceof List<String> or new T[]. This is why generic varargs gives unchecked warnings.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173527.5627732,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

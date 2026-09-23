@@ -1,0 +1,15 @@
+{
+ "tag": "A-19",
+ "desc": "Capture note 16/30 [P] Lecture project",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Lecture: the professor's project idea is to build a DBMS for personal notes. It should support semantic retrieval, not just keyword search. Team of 2.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.014796733856201172,
+ "response": "{\"id\":18,\"content\":\"Lecture: the professor's project idea is to build a DBMS for personal notes. It should support semantic retrieval, not just keyword search. Team of 2.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.7025278,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

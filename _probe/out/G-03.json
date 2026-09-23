@@ -1,0 +1,11 @@
+{
+ "tag": "G-03",
+ "desc": "G03 manual reorganize, WITH json header",
+ "method": "POST",
+ "path": "/api/structure/reorganize",
+ "body": null,
+ "raw": "",
+ "status": 200,
+ "elapsed": 0.009840965270996094,
+ "response": "{\"job_id\":246}"
+}

@@ -1,0 +1,14 @@
+{
+ "tag": "E-15",
+ "desc": "E15 guidance invalid scope",
+ "method": "POST",
+ "path": "/api/guidance",
+ "body": {
+  "scope": "universe",
+  "content": "bad scope"
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.014460086822509766,
+ "response": "{\"detail\":\"body.scope: Input should be 'entry', 'class' or 'global'\"}"
+}

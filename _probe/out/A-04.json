@@ -1,0 +1,15 @@
+{
+ "tag": "A-04",
+ "desc": "Capture note 3/30 [C] Lecture thought",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Prof said today that inheritance is not for code reuse but for substitutability. If B is-a A then anywhere A works, B must work (Liskov). I want to re-read the LSP chapter.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.08630084991455078,
+ "response": "{\"id\":5,\"content\":\"Prof said today that inheritance is not for code reuse but for substitutability. If B is-a A then anywhere A works, B must work (Liskov). I want to re-read the LSP chapter.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173527.6071672,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

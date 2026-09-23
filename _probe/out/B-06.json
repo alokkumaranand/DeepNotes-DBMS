@@ -1,0 +1,11 @@
+{
+ "tag": "B-06",
+ "desc": "List guidance after adds",
+ "method": "GET",
+ "path": "/api/guidance",
+ "body": null,
+ "raw": null,
+ "status": 200,
+ "elapsed": 0.005623579025268555,
+ "response": "{\"items\":[{\"id\":4,\"scope\":\"global\",\"target_id\":null,\"content\":\"For Java questions specifically, bullets are fine but always include a tiny code-shaped example. This overrides the general bullet rule.\",\"created_at\":1790174672.570914},{\"id\":3,\"scope\":\"global\",\"target_id\":null,\"content\":\"When I ask for study help, prefer short bullet points over long prose. Always tell me if the answer comes from my notes or from general knowledge.\",\"created_at\":1790174672.547783},{\"id\":2,\"scope\":\"entry\",\"target_id\":\"14\",\"content\":\"Treat this as personal wellbeing context. Do not surface it when I ask work or study questions.\",\"created_at\":1790174672.5351748},{\"id\":1,\"scope\":\"entry\",\"target_id\":\"18\",\"content\":\"This note is about my own DeepNotes DBMS college project, not the Java coursework. Keep it separate from Java study material.\",\"created_at\":1790174672.4799063}]}"
+}

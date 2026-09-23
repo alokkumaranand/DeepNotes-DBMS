@@ -1,0 +1,15 @@
+{
+ "tag": "A-07",
+ "desc": "Capture note 5/30 [E] Reminder",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Remind me to renew the domain deepnotes.dev before 12 October. Payment is on the HDFC card.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.010738611221313477,
+ "response": "{\"id\":7,\"content\":\"Remind me to renew the domain deepnotes.dev before 12 October. Payment is on the HDFC card.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173623.0135205,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

@@ -1,0 +1,15 @@
+{
+ "tag": "A-17",
+ "desc": "Capture note 14/30 [N] Personal",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Personal: I slept badly, 4 hours. Feeling foggy. Need to stop caffeine after 4pm.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.01410222053527832,
+ "response": "{\"id\":16,\"content\":\"Personal: I slept badly, 4 hours. Feeling foggy. Need to stop caffeine after 4pm.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173748.6646752,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

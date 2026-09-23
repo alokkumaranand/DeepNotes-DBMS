@@ -1,0 +1,13 @@
+{
+ "tag": "E-21",
+ "desc": "E21 rollback version_id 0",
+ "method": "POST",
+ "path": "/api/structure/rollback",
+ "body": {
+  "version_id": 0
+ },
+ "raw": null,
+ "status": 422,
+ "elapsed": 0.004357337951660156,
+ "response": "{\"detail\":\"body.version_id: Input should be greater than 0\"}"
+}

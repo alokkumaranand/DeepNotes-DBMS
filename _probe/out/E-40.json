@@ -1,0 +1,11 @@
+{
+ "tag": "E-40",
+ "desc": "E40 double-encoded / odd content-type json",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": null,
+ "raw": "{\"content\":\"ok\"}",
+ "status": 201,
+ "elapsed": 0.03000617027282715,
+ "response": "{\"id\":38,\"content\":\"ok\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790175671.4406157,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

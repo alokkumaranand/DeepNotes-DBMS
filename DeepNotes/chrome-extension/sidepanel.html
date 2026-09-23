@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>DeepNotes · A little room to think</title>
+  <link rel="stylesheet" href="./panel.css">
+  <script type="module" src="./panel.mjs"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-row">
+        <a class="brand" href="#capture" aria-label="DeepNotes, Capture">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M7 5h7a9 9 0 0 1 0 18H7V5Z" stroke="currentColor" stroke-width="2.2"/><path d="M11 10h3a4 4 0 0 1 0 8h-3V10Z" fill="currentColor"/></svg></span>
+          <span>deepnotes<span class="brand-caption">A little room to think.</span></span>
+        </a>
+        <button id="settings-toggle" class="icon-button" type="button" aria-label="Open settings" aria-controls="settings-panel" aria-expanded="false" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 4 1-2h4l1 2 2 1 2 .2 2 3.5-1 1.8v3l1 1.8-2 3.5-2 .2-2 1-1 2h-4l-1-2-2-1-2-.2-2-3.5 1-1.8v-3L3 8.7l2-3.5L7 5l2-1Z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="11.9" r="3" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+      </div>
+      <nav class="mode-nav" aria-label="Workspace">
+        <button id="tab-capture" type="button" class="mode-button is-active" data-mode="capture" aria-current="page"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Capture</button>
+        <button id="tab-ask" type="button" class="mode-button" data-mode="ask"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16 9a6 6 0 0 1-6 6H7l-4 2V9a6.5 6.5 0 0 1 13 0Z" stroke="currentColor" stroke-width="1.5"/></svg>Ask</button>
+        <button id="tab-library" type="button" class="mode-button" data-mode="library"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4v12M8 4v12m4-11 4 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Library</button>
+      </nav>
+    </header>
+
+    <main id="main-content" class="scroll-content">
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div id="environment-banner" class="environment-banner" hidden></div>
+
+      <section id="settings-panel" class="card settings-card" aria-labelledby="settings-heading" hidden>
+        <div class="section-heading"><div><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="settings-heading">Settings</h2></div><button id="settings-close" class="text-button" type="button">Done</button></div>
+        <form id="connection-form" class="stack">
+          <label for="backend-port">Local backend port</label>
+          <div class="inline-control"><span class="input-prefix">127.0.0.1 :</span><input id="backend-port" name="port" type="number" min="1" max="65535" step="1" value="8000" required><button class="secondary-button" type="submit">Connect</button></div>
+        </form>
+        <div class="field-group"><label for="extension-id">Your Chrome extension ID</label><div class="inline-control"><input id="extension-id" class="mono" readonly value="Unavailable outside Chrome" spellcheck="false"><button id="copy-id" type="button" class="secondary-button">Copy</button></div><p class="helper">Allow this exact ID in the local backend. <a id="guide-link" href="./guide.html" target="_blank" rel="noopener noreferrer">Setup guide ↗</a></p></div>
+        <details class="settings-details"><summary>Teach DeepNotes your context</summary>
+          <p class="helper">Add meaning, not another note. Choose exactly where this context applies; saving also queues a structural review.</p>
+          <form id="guidance-form" class="stack">
+            <label for="guidance-scope">Applies to</label><select id="guidance-scope"><option value="entry">One note</option><option value="class">One class / section</option><option value="global">All notes · global</option></select>
+            <div id="guidance-target-field" class="stack"><label id="guidance-target-label" for="guidance-target">Note ID</label><input id="guidance-target" maxlength="80" placeholder="For example, 12" required list="guidance-targets"><datalist id="guidance-targets"></datalist></div>
+            <label for="guidance-content">Additional context</label><textarea id="guidance-content" rows="3" maxlength="4000" required placeholder="What should DeepNotes know?"></textarea>
+            <button id="guidance-save" class="secondary-button" type="submit">Save scoped context</button>
+          </form>
+        </details>
+        <details class="settings-details"><summary>Organization & connection</summary><p id="system-detail" class="helper">Waiting for the local backend.</p><div id="class-list" class="class-list"></div><button id="reorganize" class="secondary-button" type="button">Reorganize library</button><p class="helper">Queues a review. Your original notes stay unchanged.</p></details>
+      </section>
+
+      <section id="view-capture" class="mode-view" aria-labelledby="capture-heading">
+        <div class="view-heading"><p class="eyebrow">KEEP THE GOOD BITS</p><h1 id="capture-heading">A thought worth keeping.</h1><p>Catch an idea. Make room for the next.</p></div>
+        <button id="capture-current" type="button" class="attach-button"><span class="attach-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 8h8m-8 4h5m-1 3v4m-2-2h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span><strong>Attach current page</strong><span>Use selected text and the page source</span></span><span class="attach-plus" aria-hidden="true">+</span></button>
+        <p class="capture-help">Only when you choose. Nothing is saved automatically.</p>
+
+        <section id="capture-preview" class="card preview-card" aria-labelledby="preview-heading" hidden>
+          <div class="section-heading"><p id="preview-heading" class="eyebrow">CAPTURE PREVIEW</p><button id="dismiss-capture" class="text-button" type="button">Dismiss</button></div>
+          <p id="preview-title" class="source-title"></p><a id="preview-url" class="source-url" target="_blank" rel="noopener noreferrer"></a><pre id="preview-text" class="preview-text"></pre>
+          <p id="preview-warning" class="helper"></p>
+          <div class="preview-actions"><button id="add-capture" class="secondary-button" type="button">Add to note</button><button id="replace-capture" class="text-button" type="button">Replace note & source</button><button id="source-only" class="text-button" type="button">Attach source only</button></div>
+        </section>
+
+        <form id="note-form" class="card editor-card">
+          <div class="editor-heading"><label for="note-content">Your note</label><span id="draft-state" class="micro">Window draft</span></div>
+          <textarea id="note-content" class="note-editor" rows="8" aria-describedby="note-count draft-help" placeholder="An interesting passage, a half-formed idea, a little thing you don’t want to forget…" spellcheck="true" required></textarea>
+          <section id="attached-source" class="attached-source" aria-label="Frozen attached source" hidden><div><span class="eyebrow">ATTACHED SOURCE</span><p id="source-title" class="source-title"></p><a id="source-url" class="source-url" target="_blank" rel="noopener noreferrer"></a></div><button id="remove-source" class="icon-button small" type="button" aria-label="Remove attached source" title="Remove source">×</button></section>
+          <div class="editor-bottom"><span id="note-count" class="micro">0 / 20,000</span><span class="micro">Plain text, just as you wrote it</span></div>
+          <button id="save-note" class="primary-button full-width" type="submit"><span>Save to library</span><span aria-hidden="true">↗</span></button>
+        </form>
+        <p id="draft-help" class="helper centered">Draft stays in this Chrome window. An attached source stays fixed when you change tabs.</p>
+        <div class="quiet-card"><span class="quiet-spark" aria-hidden="true">✧</span><div><h2>A place for unfinished thoughts.</h2><p>Save the original. DeepNotes finds connections and leaves room for your context.</p></div></div>
+      </section>
+
+      <section id="view-ask" class="mode-view" aria-labelledby="ask-heading" hidden>
+        <div class="view-heading"><p class="eyebrow">THINK WITH YOUR NOTES</p><h1 id="ask-heading">Pull a thread.</h1><p>Your ideas, with a little perspective.</p></div>
+        <form id="ask-form" class="card ask-card"><label for="question">What’s on your mind?</label><textarea id="question" rows="4" maxlength="4000" required placeholder="What connects the things I’ve been saving?" aria-describedby="ask-help"></textarea><button id="ask-submit" class="primary-button full-width" type="submit"><span>Ask DeepNotes</span><span aria-hidden="true">↗</span></button></form>
+        <p id="ask-help" class="helper">Answers use saved notes, not the open page or unsaved draft. Requests can take up to 270 seconds. Closing this panel may interrupt the display; recover saved results in history.</p>
+        <div id="ask-progress" class="notice" role="status" hidden>Thinking with your library… You can keep writing while you wait.</div>
+        <div id="answer-result" aria-live="polite"></div>
+        <div class="section-heading history-heading"><h2>Previous conversations</h2><button id="refresh-history" class="text-button" type="button">Refresh</button></div>
+        <p class="helper">Saved answers and failures. Conversation history is not source evidence.</p>
+        <div id="history-list" class="card-list"><p class="empty-state">Your conversations will be here.</p></div>
+      </section>
+
+      <section id="view-library" class="mode-view" aria-labelledby="library-heading" hidden>
+        <div class="view-heading"><p class="eyebrow">YOUR GROWING COLLECTION</p><h1 id="library-heading">Room for every idea.</h1><p>Original notes. New connections.</p></div>
+        <div class="section-heading"><h2>Recent notes <span id="library-count" class="count-pill">0</span></h2><button id="refresh-library" class="text-button" type="button">Refresh</button></div>
+        <p id="library-helper" class="helper">Your latest 30 notes. Open a card to see its original and add context.</p>
+        <div id="notes-list" class="card-list"><p class="empty-state">Connect to your local backend to see your notes.</p></div>
+        <button id="more-notes" class="secondary-button full-width" type="button" hidden>Load older notes</button>
+      </section>
+    </main>
+
+    <footer class="app-footer"><div class="connection"><span id="connection-dot" class="status-dot" aria-hidden="true"></span><span id="connection-label" role="status">Connecting locally</span></div><button id="footer-settings" class="text-button" type="button">Local workspace <span aria-hidden="true">↗</span></button></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+ "tag": "A-10",
+ "desc": "Capture note 8/30 [H] Gym log",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": {
+  "content": "Gym log: squats 5x5 at 80kg felt heavy, bench 3x8 at 55kg. Left shoulder slightly tight on the last set.",
+  "source_url": "",
+  "source_title": ""
+ },
+ "raw": null,
+ "status": 201,
+ "elapsed": 0.010076045989990234,
+ "response": "{\"id\":10,\"content\":\"Gym log: squats 5x5 at 80kg felt heavy, bench 3x8 at 55kg. Left shoulder slightly tight on the last set.\",\"source_url\":\"\",\"source_title\":\"\",\"created_at\":1790173623.1118095,\"session_id\":\"dab611ee-abe8-4b3c-987a-f749aa9eb9ac\",\"revision\":1,\"interpretation\":null,\"status\":\"pending\"}"
+}

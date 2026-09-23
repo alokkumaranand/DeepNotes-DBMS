@@ -1,0 +1,11 @@
+{
+ "tag": "E-10",
+ "desc": "E10 POST without JSON content-type",
+ "method": "POST",
+ "path": "/api/entries",
+ "body": null,
+ "raw": "content=hi",
+ "status": 415,
+ "elapsed": 0.013922929763793945,
+ "response": "{\"detail\":\"Use application/json\"}"
+}

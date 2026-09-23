@@ -1,0 +1,11 @@
+{
+ "tag": "G-02",
+ "desc": "G02 retry an already-completed job, WITH json header",
+ "method": "POST",
+ "path": "/api/jobs/1/retry",
+ "body": null,
+ "raw": "",
+ "status": 400,
+ "elapsed": 0.004986286163330078,
+ "response": "{\"detail\":\"Model output or referenced data failed validation; inspect the run and retry.\"}"
+}
